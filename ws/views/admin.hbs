@@ -1,0 +1,186 @@
+<div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/"><i class="fas fa-tasks"></i><span>Open Issues</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/submitissues"><i class="far fa-edit"></i><span>Submit an Issue</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/registeradmin"><i class="fa fa-users"></i><span>Register Admin</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/removeadmin"><i class="fa fa-users"></i><span>Remove Admin</span></a></li></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/blacklistuser"><i class="fa fa-users"></i><span>Blacklist User</span></a></li></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/unblacklistuser"><i class="fa fa-users"></i><span>Unblacklist User</span></a></li></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button><span>Pixlies Issue Tracker</span>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"></div>
+                        </form>
+                    </div>
+                </nav>
+                
+                
+                <div class="container-fluid">
+                    <div class="row" style="color: rgb(0,30,255);">
+                        <div class="col-md-6 col-xl-3 mb-4" style="color: rgb(21,43,207);">
+                            <h1 style="width: 221px;color: rgb(69,82,176);font-size: 25px;">Suggestions</h1>
+                            {{#each suggestions}}
+                            <div class="jumbotron text-center"><small class="text-center" style="margin: 4px;padding: 3px;font-size: 10px;color: rgb(40,40,41);">ID: {{this.id}}</small>
+                                <p>{{this.desc}}</p><i class="fa fa-user-o" style="margin: 4px;"></i><small class="text-center"
+                                    style="color: rgb(40,40,41);">{{this.author}}</small>
+                                <p></p>
+                                <div class="col"><i class="fa fa-male" style="margin: 2px;"></i><small>{{this.assigned}}</small></div>
+                                <div class="col"><i class="fa fa-dashboard" style="margin: 2px;"></i><small>{{this.severity}}</small></div>
+                                <div class="col"><i class="fa fa-tag" style="margin: 3px;"></i><small>{{this.tag}}</small></div>
+                                <div><a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-5{{this.id}}" href="#collapse-5{{this.id}}" role="button" style="margin: 4px;"><i class="fa fa-pencil" style="margin: 2px;"></i>Edit</a>
+                                    <div class="collapse"
+                                        id="collapse-5{{this.id}}">
+                                        
+                                        <form action="/editissue" method="POST" id="{{this.id}}">
+                                            <div class="form-group"><label>Issue ID</label><input name="id" id="id" class="form-control" type="text" readonly="" placeholder="{{this.id}}" value="{{this.id}}"></div>
+                                            <div class="form-group"><label>Severity</label><select name="severity" id="severity" class="form-control"><option value="1" selected="">Cosmetic</option><option value="2">Low</option><option value="3">Medium</option><option value="4">High</option><option value="5">Gamebreaking</option></select></div>
+                                            <div
+                                                class="form-group"><label>Status</label><select name="tag" id="tag" class="form-control"><option value="suggestion">Suggestion</option><option value="open">Open</option><option value="active">Active</option><option value="closed">Closed</option></select></div>
+                                    <div
+                                        class="form-group"><label>Assign to</label><input class="form-control" type="text" name="text" id="text"></div>
+                                <div class="form-group"><button class="btn btn-primary" type="submit"><i class="fa fa-save" style="margin: 5px;"></i>Save</button></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div><a class="btn btn-danger" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-2{{this.id}}" href="#collapse-2{{this.id}}" role="button"><i class="fa fa-remove" style="margin: 2px;"></i>Delete</a>
+                            <div class="collapse" id="collapse-2{{this.id}}">
+                                <form action="/deleteissue" method="POST">
+                                    <div class="form-group">
+                                        <p>Enter Issue ID to confirm</p><input name="check" id="check" class="form-control" type="text" readonly="" placeholder="{{this.id}}" value="{{this.id}}"><input name="tocheck" id="tocheck" class="form-control" type="text"></div>
+                                    <div class="form-group"><button class="btn btn-danger" type="submit">Confirm</button></div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    
+                    </div>
+                {{/each}}
+                </div>
+                
+                <div class="col-md-6 col-xl-3 mb-4">
+                    <h1 style="width: 221px;color: rgb(69,82,176);font-size: 25px;">Open Issues</h1>
+                    {{#each openIssues}}
+                    <div class="jumbotron text-center"><small class="text-center" style="margin: 4px;padding: 3px;font-size: 10px;color: rgb(40,40,41);">ID: {{this.id}}</small>
+                        <p> {{this.desc}} </p><i class="fa fa-user-o" style="margin: 4px;"></i><small class="text-center" style="color: rgb(40,40,41);">{{this.author}}</small>
+                        <p></p>
+                        <div class="col"><i class="fa fa-male" style="margin: 2px;"></i><small>{{this.assigned}}</small></div>
+                        <div class="col"><i class="fa fa-dashboard" style="margin: 2px;"></i><small>{{this.severity}}</small></div>
+                        <div class="col"><i class="fa fa-tag" style="margin: 3px;"></i><small>{{this.tag}}</small></div>
+                        <div><a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-4{{this.id}}" href="#collapse-4{{this.id}}" role="button" style="margin: 4px;"><i class="fa fa-pencil" style="margin: 2px;"></i>Edit</a>
+                            <div class="collapse"
+                                id="collapse-4{{this.id}}">
+                                <form action="/editissue" method="POST">
+                                    <div class="form-group"><label>Issue ID</label><input name="id" id="id" class="form-control" type="text" readonly="" placeholder="{{this.id}}" value="{{this.id}}"></div>
+                                    <div class="form-group"><label>Severity</label><select name="severity" id="severity" class="form-control"><option value="1" selected="">Cosmetic</option><option value="2">Low</option><option value="3">Medium</option><option value="4">High</option><option value="5">Gamebreaking</option></select></div><label>Status</label>
+                                    <div
+                                        class="form-group"><select name="tag" id="tag" class="form-control"><option value="suggestion">Suggestion</option><option value="open" selected="">Open</option><option value="active">Active</option><option value="closed">Closed</option></select></div>
+                            <div
+                                class="form-group"><label>Assign to</label><input name="text" id="text" class="form-control" type="text"></div>
+                        <div class="form-group"><button class="btn btn-primary" type="submit"><i class="fa fa-save" style="margin: 5px;"></i>Save</button></div>
+                        </form>
+                    </div>
+                </div>
+                <div><a class="btn btn-danger" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-3{{this.id}}" href="#collapse-3{{this.id}}" role="button"><i class="fa fa-remove" style="margin: 2px;"></i>Delete</a>
+                    <div class="collapse" id="collapse-3{{this.id}}">
+                        <form action="/deleteissue" method="POST">
+                            <div class="form-group">
+                                <p>Enter Issue ID to confirm.</p>
+                            </div>
+                            <div class="form-group"><input name="check" id="check" class="form-control" type="text" readonly="" placeholder="{{this.id}}" value="{{this.id}}"><input name="tocheck" id="tocheck" class="form-control" type="text"></div>
+                            <div class="form-group"><button class="btn btn-danger" type="submit">Confirm</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <h1 style="width: 221px;color: rgb(69,82,176);font-size: 25px;">Active Issues</h1>
+            {{#each activeIssues}}
+            <div class="jumbotron text-center"><small class="text-center" style="margin: 4px;padding: 3px;font-size: 10px;color: rgb(40,40,41);">ID: {{this.id}}</small>
+                <p>{{this.desc}}</p><i class="fa fa-user-o" style="margin: 4px;"></i><small class="text-center"
+                    style="color: rgb(40,40,41);">{{this.author}}</small>
+                <p></p>
+                <div class="col"><i class="fa fa-male" style="margin: 2px;"></i><small>{{this.assigned}}</small></div>
+                <div class="col"><i class="fa fa-dashboard" style="margin: 2px;"></i><small>{{this.severity}}</small></div>
+                <div class="col"><i class="fa fa-tag" style="margin: 3px;"></i><small>{{this.tag}}</small></div>
+                <div><a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1{{this.id}}" href="#collapse-1{{this.id}}" role="button" style="font-size: 14px;margin: 4px;height: 38px;"><i class="fa fa-pencil" style="margin: 2px;"></i>Edit</a>
+                    <div
+                        class="collapse" id="collapse-1{{this.id}}">
+                        <form method="post" action="/editissue">
+                            <div class="form-group"><label>Issue ID</label><input name="id" id="id" class="form-control" type="text" readonly="" placeholder="{{this.id}}" value="{{this.id}}"></div>
+                            <div class="form-group"><label>Severity&nbsp;</label><select name="severity" id="severity" class="form-control"><option value="1">Cosmetic</option><option value="2" selected="">Low</option><option value="3">Medium</option><option value="4">High</option><option value="5">Gamebreaking</option></select></div>
+                            <div
+                                class="form-group"><label>Status</label><select name="tag" id="tag" class="form-control"><option value="suggestion">Suggestion</option><option value="open">Open</option><option value="active">Active</option><option value="closed">Closed</option></select></div>
+                <div class="form-group"><label>Assign to</label><input name="text" id="text" class="form-control" type="text" required=""></div>
+                <div class="form-group"><button class="btn btn-primary" type="submit"><i class="fa fa-save" style="height: 18px;margin: 5px;"></i>Save</button></div>
+                </form>
+            </div>
+        </div>
+        <div><a class="btn btn-danger" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-6{{this.id}}" href="#collapse-6{{this.id}}" role="button"><i class="fa fa-remove" style="margin: 2px;"></i>Delete</a>
+            <div class="collapse" id="collapse-6{{this.id}}">
+                <form action="/deleteissue" method="POST">
+                    <div class="form-group">
+                        <p>Enter Issue ID to confirm.</p><input name="check" id="check" class="form-control" type="text" readonly="" placeholder="{{this.id}}" value="{{this.id}}"><input name="tocheck" id="tocheck" class="form-control" type="text"></div>
+                    <div class="form-group"><button class="btn btn-danger" type="submit">Confirm</button></div>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+    {{/each}}
+    </div>
+    <div class="col-md-6 col-xl-3 mb-4">
+        <h1 style="width: 221px;color: rgb(69,82,176);font-size: 25px;">Closed Issues</h1>
+        {{#each closedIssues}}
+        <div class="jumbotron text-center"><small class="text-center" style="margin: 4px;padding: 3px;font-size: 10px;color: rgb(40,40,41);">ID: {{this.id}}</small>
+            <p>{{this.desc}}</p><i class="fa fa-user-o" style="margin: 4px;"></i><small class="text-center" style="color: rgb(40,40,41);">{{this.author}}</small>
+            <p></p>
+            <div class="col"><i class="fa fa-male" style="margin: 2px;"></i><small>{{this.assigned}}</small></div>
+            <div class="col"><i class="fa fa-dashboard" style="margin: 2px;"></i><small>{{this.severity}}</small></div>
+            <div class="col"><i class="fa fa-tag" style="margin: 3px;"></i><small>{{this.tag}}</small></div>
+            <div><a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-7{{this.id}}" href="#collapse-7{{this.id}}" role="button" style="margin: 4px;"><i class="fa fa-pencil" style="margin: 2px;"></i>Edit</a>
+                <div class="collapse" id="collapse-7{{this.id}}">
+                    <form action="/editissue" method="POST">
+                        <div class="form-group"><label>Issue ID</label><input name="id" id="id" class="form-control" type="text" placeholder="{{this.id}}" value="{{this.id}}" readonly=""></div>
+                        <div class="form-group"><label>Severity</label><select name="severity" id="severity" class="form-control"><option value="1" selected="">Cosmetic</option><option value="2">Low</option><option value="3">Medium</option><option value="4">High</option><option value="5">Gamebreaking</option></select></div>
+                        <div
+                            class="form-group"><label>Status</label><select name="tag" id="tag" class="form-control"><option value="suggestion" selected="">Suggestion</option><option value="open">Open</option><option value="active">Active</option><option value="closed">Closed</option></select></div>
+                <div
+                    class="form-group"><label>Assign to</label><input name="text" id="text" class="form-control" type="text"></div>
+            <div class="form-group"><button class="btn btn-primary" type="submit"><i class="fa fa-save" style="margin: 5px;"></i>Save</button></div>
+            </form>
+        </div>
+    </div>
+    <div><a class="btn btn-danger" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-8{{this.id}}" href="#collapse-8{{this.id}}" role="button"><i class="fa fa-remove" style="margin: 5px;"></i>Delete</a>
+        <div class="collapse" id="collapse-8{{this.id}}">
+            <form action="/deleteissue" method="POST">
+                <div class="form-group">
+                    <p>Enter Issue ID to confirm.</p><input name="check" id="check" class="form-control" type="text" readonly="" value="{{this.id}}" placeholder="{{this.id}}"><input name="tocheck" id="tocheck" class="form-control" type="text"></div>
+                <div class="form-group"><button class="btn btn-danger" type="submit">Confirm</button></div>
+            </form>
+        </div>
+    </div>
+    
+    </div>
+    {{/each}}
+    </div>
+    </div>
+    </div>
+    
+    </div>
+    
+    <footer class="bg-white sticky-footer">
+        <h1 class="text-center" style="font-size: 20px;"><br></h1>
+    
+    </footer>

@@ -1,0 +1,5 @@
+{
+    "client_id": "ClientIDgoeshere",
+    "client_secret": "clientsecretgoeshere",
+    "guild_id": "thisistheguildidtheuserthatsubmitsanissuehastobeamemberof"
+}

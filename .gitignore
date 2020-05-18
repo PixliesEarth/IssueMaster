@@ -1,0 +1,10 @@
+config.js
+scores.sqlite
+scores.sqlite-shm
+scores.sqlite-wal
+issues.splite.db
+issues.sqlite
+ws_config.json
+fullchain.pem
+privkey.pem
+/commands/

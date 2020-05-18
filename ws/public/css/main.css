@@ -1,0 +1,242 @@
+body {
+  background-color: rgb(43, 43, 43)
+}
+
+h1 {
+  color: white;
+  font-family: Verdana;
+  font-size: 28px;
+  text-align: center;
+}
+h3 {
+  color: white;
+  font-family: Verdana;
+  font-size: 16;
+  text-align: center;
+}
+
+li {
+  font-family: verdana;
+  color: white;
+  font-size: 18px;
+  text-align: left;
+  line-height: 1.1;
+  margin-left: 1rem;
+  height: 100px;
+}
+
+.selectors {
+  border: none;
+  font-size: 32px;
+}
+.div3 {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+.div1 {
+  font-size: 18py;
+  font-family: verdana;
+  margin-top: 2rem;
+  color: white;
+  position: relative;
+  float: middle;
+  width: 90%;
+  height: 700px;
+  padding: 30px;
+  overflow-y: scroll;
+  line-height: 10px;
+  text-align: left;
+  
+}
+
+.div2 {
+  
+  font-family: verdana;
+  margin-top: 2rem;
+  font-size: 12px;
+  position: relative;
+  float: left;
+  width: 40rem;
+  height: 420px;
+  padding: 30px;
+  overflow-y: scroll;
+  
+  text-align: left;
+  
+}
+
+.scrollbar {
+  background-color: #F5F5F5;
+  float: left;
+  height: 300px;
+  margin-bottom: 25px;
+  margin-left: 22px;
+  margin-top: 40px;
+  width: 65px;
+  overflow-y: scroll;
+}
+.force-overflow {
+  min-height: 450px;
+}
+::-webkit-scrollbar
+{
+  width: 4px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.0);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.special {
+  border: 2px solid white;
+  
+  width: 19rem;
+  margin-top: 4rem;
+  
+  text-align: left;
+  line-height: 3rem;
+  background-color: white;
+  
+}
+.leaderboard {
+  margin-left: 3%;
+}
+.leaderboard_img {
+  float: left;
+  margin-left: 20px;
+}
+.special2 {
+  border: 2px solid white;
+  float: right;
+  width: 19rem;
+  margin-top: 4rem;
+  
+  text-align: left;
+  line-height: 3rem;
+  background-color: white;
+  
+}
+div {
+  margin: 15px;
+  height: 100px;
+  
+}
+ul {
+  list-style-type: none;
+  width: 60%;
+  height: 100px;
+  float: left;
+  margin-left: 15.5%;
+  
+}
+ 
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+  text-align: left;
+}
+ 
+li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+ 
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  height: 100px;
+  margin-left: 6px;
+} 
+
+.button {
+  border: none;
+  padding: 8px 32px;
+  text-align: center;
+  margin: 4px 2px;
+  display: inline-block;
+  
+}
+.invbtn {
+  background-color: rgb(107, 35, 223);
+  color: white;
+  font-family: Verdana;
+  font-size: 15;
+  transition: all 0.5s;
+  border: none;
+  float: right;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.invbtn3 {
+  background-color: rgb(107, 35, 223);
+  color: white;
+  font-family: Verdana;
+  font-size: 25px;
+  transition: all 0.5s;
+  border: none;
+  float: right;
+  margin-left: 70%;
+  margin-top: 10px;
+  margin-bottom: auto;
+}
+
+.invbtn2 {
+  background-color: rgb(107, 35, 223);
+  color: white;
+  font-family: Verdana;
+  font-size: 15;
+  transition: all 0.5s;
+  border: none;
+  
+  
+  margin-bottom: 90px;
+}
+.invbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.invbtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.invbtn:hover {
+  content: "";
+  background-color: rgb(23, 192, 73);
+  cursor: pointer;
+}
+
+.invbtn:hover span {
+  padding-right: 25px;
+  /*border-width: 4px;
+  border-color: black;*/
+}
+
+.invbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+li {
+  padding: 10px;
+  overflow-y: hidden;
+  height:100px;
+}
+
+ /*
+li:hover {
+  background: rgb(112, 112, 112);
+  cursor: pointer;
+}

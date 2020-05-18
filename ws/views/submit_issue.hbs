@@ -1,0 +1,38 @@
+
+
+
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;assets/img/dogs/image2.jpeg&quot;);"></div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Submit a new issue!</h4>
+                            </div>
+                            <form class="user" action="/issueposted" method="POST">
+                                <div class="form-group row" style="height: 76px;">
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="height: 84px;"><label><i class="fa fa-user-o" style="margin: 4px;"></i>&nbsp;Author</label><input name="author" id="author" class="form-control" type="text" readonly="" value="{{name}}" placeholder="{{name}}"></div>
+                                </div>
+                                <div class="form-group row" style="height: 76px;">
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="height: 84px;"><label><i class="fa fa-sliders" style="margin: 4px;"></i>&nbsp;Severity</label><select name="severity" id="severity" class="form-control"><option value="1" selected="">Cosmetic</option><option value="2">Low</option><option value="3">Medium</option><option value="4">High</option><option value="5">Gamebreaking</option></select></div>
+                                </div>
+                                <div class="form-group row" style="height: 76px;"><textarea name="text" id="text" class="form-control" required="" minlength="25" maxlength="2000" style="margin: 0px;width: 534px;height: 80px;padding: 11px;" placeholder="Describe the issue here . . ."></textarea></div><button class="btn btn-primary btn-block text-white btn-user"
+                                    type="submit">Submit</button>
+                                <hr>
+                                <hr>
+                            </form>
+                            <div class="text-center"></div>
+                            <div class="text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
